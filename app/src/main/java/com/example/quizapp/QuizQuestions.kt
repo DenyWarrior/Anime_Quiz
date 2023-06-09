@@ -7,12 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat
 
 class QuizQuestions : AppCompatActivity(), View.OnClickListener {
@@ -21,6 +16,8 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
     private var mQuestionsList : ArrayList<Question>? = null
     private var mSelectedOptionPosition : Int = 0
     private var mUserName : String? = null
+    private var mtopic : String? = null
+
     private var totalCorrect : Int = 0
 
     private var progressBar : ProgressBar? = null
@@ -39,6 +36,8 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
         mUserName = intent.getStringExtra(Constant.USER_NAME)
+        mtopic = intent.getStringExtra(Constant.SELECTED_TOPIC)
+
         progressBar = findViewById(R.id.progress_bar)
         tvProgress = findViewById(R.id.tv_progress)
         tvQuestion = findViewById(R.id.tv_question)
@@ -49,15 +48,21 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
         tvOption4 = findViewById(R.id.tv_option_four)
         btnSubmit = findViewById(R.id.btn_submit)
 
+
         tvOption1?.setOnClickListener(this)
         tvOption2?.setOnClickListener(this)
         tvOption3?.setOnClickListener(this)
         tvOption4?.setOnClickListener(this)
         btnSubmit?.setOnClickListener(this)
 
-        mQuestionsList = Constant.getQuestions()
-        setQuestion()
-
+        if (mtopic == "Anime") {
+            mQuestionsList = Anime.getQuestions()
+            setQuestion()
+        }
+        else{
+            mQuestionsList = Flag.getQuestions()
+            setQuestion()
+        }
     }
 
     private fun setQuestion() {
@@ -202,7 +207,6 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
                     drawableView
                 )
             }
-
         }
     }
 }

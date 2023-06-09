@@ -10,4 +10,10 @@
     <string name="conratulations">Conratulations!</string>
     <string name="finish">Finish</string>
     <string name="image">image</string>
+    <string name="select_topic">Select Topic</string>
+    <string-array name="items">
+        <item>Country Flags</item>
+        <item>Anime</item>
+        <!-- Add more items as needed -->
+    </string-array>
 </resources>

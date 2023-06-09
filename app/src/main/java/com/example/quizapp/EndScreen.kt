@@ -15,7 +15,6 @@ class EndScreen : AppCompatActivity() {
         val  btnFinish : TextView = findViewById(R.id.bttn_finish)
 
         tvName.text = intent.getStringExtra(Constant.USER_NAME)
-
         val totalQuestion = intent.getIntExtra(Constant.TOTAL_QUESTIONS,0)
         val correctAnswer = intent.getIntExtra(Constant.CORRECT_ANSWERS,0)
 
